@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "NODE_ENV=development npm run build",
+    "dev": "NODE_ENV=development wrangler dev",
     "format": "prettier --write '**/*.{ts,js,css,json,md}'",
     "test:clean": "rimraf ./transpiled/src ./transpiled/test",
     "test": "npm run test:clean && npm run transpile && mocha --require source-map-support/register --recursive transpiled/test",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^2.0.0",
+    "@cloudflare/wrangler": "^1.12.2",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
