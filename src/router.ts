@@ -15,6 +15,9 @@ const Post = Method('post')
 const Put = Method('put')
 const Trace = Method('trace')
 
+export const isOptionsReq = (event: FetchEvent) =>
+  event.request.method === 'OPTIONS'
+
 const Header = (header: string, val: string) => (req: Request) =>
   req.headers.get(header) === val
 const Host = (host: string) => Header('host', host.toLowerCase())

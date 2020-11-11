@@ -1,9 +1,12 @@
-import Router from './router'
+import Router, { isOptionsReq } from './router'
+import { handleCORSOptions } from './utils/cors'
 import { JSONResponse } from './utils/json-response'
 // import { handlers as users } from './users'
 
 addEventListener('fetch', (event) => {
-  event.respondWith(handleRequest(event.request))
+  const handler = isOptionsReq(event) ? handleCORSOptions : handleRequest
+
+  event.respondWith(handler(event.request))
 })
 
 async function handleRequest(request: Request) {
